@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="Admin-Dash.css" media="screen">
+</head>
+<body class="u-body u-xl-mode">
+    <section class="u-align-center u-clearfix u-custom-color-5" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div style="width: 570px; margin: 60px auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); background-color: white;">
+            <img src="images/LOGOWName.png" alt="Logo" style="width: 100%; max-width: 400px; margin: 0 auto 20px auto; display: block;">
+            <h2 class="u-align-center">Admin Login</h2>
+            <form id="loginForm" class="u-clearfix u-form-spacing-20 u-form-vertical u-inner-form" style="padding: 10px;">
+                <div class="u-form-group u-form-name">
+                    <input type="text" placeholder="Enter your Username" name="username" class="u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-group">
+                    <input type="password" placeholder="Enter Password" name="password" class="u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-align-center u-form-group u-form-submit">
+                    <button type="submit" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1">LOG-IN</button>
+                </div>
+                <div id="login-error" style="color: red; text-align: center; margin-top: 10px;"></div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const loginError = document.getElementById("login-error");
+            loginError.textContent = "";
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch("http://127.0.0.1:8000/login", {
+                    method: "POST",
+                    body: formData
+                });
+                const data = await response.json();
+                if (!response.ok) {
+                    loginError.textContent = data.detail || "Login failed.";
+                } else {
+                    localStorage.setItem("access_token", data.access_token);
+                    window.location.href = "Admin-Dash.html";
+                }
+            } catch (error) {
+                loginError.textContent = "Could not connect to server.";
+            }
+        });
+    </script>
+</body>
+</html>

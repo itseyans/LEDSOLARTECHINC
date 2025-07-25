@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Admin Dashboard">
+    <meta name="description" content="">
+    <title>Admin Dash</title>
+    
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="Admin-Dash.css" media="screen">
+    
+    <meta name="generator" content="Nicepage 7.10.10, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Admin Dash">
+    <meta property="og:type" content="website">
+
+    <style>
+        /* --- UPDATED: Full Page Layout Styles --- */
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto; /* This makes the main content area grow to push the footer down */
+        }
+        footer {
+            flex-shrink: 0; /* Prevents the footer from shrinking */
+        }
+         .u-dialog-section-6 {
+            background-image: none;
+        }
+        .u-dialog-section-6 .u-dialog-1 {
+            width: 800px;
+            min-height: 576px;
+            background-image: linear-gradient(#0c6e45, #c3dc00);
+            height: auto;
+            --radius: 12px;
+            margin: 60px auto;
+        }
+        .u-dialog-section-6 .u-container-layout-1 {
+            padding: 19px 21px;
+        }
+        .u-dialog-section-6 .u-group-1 {
+            --radius: 10px;
+            height: auto;
+            width: 758px;
+            min-height: 538px;
+            margin: 0 auto;
+        }
+        .u-dialog-section-6 .u-container-layout-2 {
+            padding: 30px;
+        }
+        .u-dialog-section-6 .u-image-1 {
+            width: 535px;
+            height: 106px;
+            margin: 0 auto;
+        }
+        .u-dialog-section-6 .u-form-1 {
+            height: 406px;
+            width: 570px;
+            margin: 43px auto 0;
+        }
+        .u-dialog-section-6 .u-btn-1 {
+            --radius: 12px;
+            background-image: none;
+            font-weight: 700;
+        }
+        .u-dialog-section-6 .u-icon-1 {
+            width: 74px;
+            height: 74px;
+            top: 483px;
+            position: absolute;
+            left: auto;
+            right: 21px;
+            padding: 0;
+        }
+        @media (max-width: 1199px) {
+            .u-dialog-section-6 .u-group-1 {
+                margin-right: initial;
+                margin-left: initial;
+                height: auto;
+                width: auto;
+            }
+            .u-dialog-section-6 .u-image-1 {
+                width: 535px;
+                height: 106px;
+            }
+        }
+        @media (max-width: 991px) {
+            .u-dialog-section-6 .u-dialog-1 {
+                width: 720px;
+            }
+        }
+        @media (max-width: 767px) {
+            .u-dialog-section-6 .u-dialog-1 {
+                width: 540px;
+            }
+            .u-dialog-section-6 .u-container-layout-1 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .u-dialog-section-6 .u-container-layout-2 {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .u-dialog-section-6 .u-image-1 {
+                width: 500px;
+                height: 99px;
+            }
+            .u-dialog-section-6 .u-form-1 {
+                width: 500px;
+            }
+        }
+        @media (max-width: 575px) {
+            .u-dialog-section-6 .u-dialog-1 {
+                width: 340px;
+            }
+            .u-dialog-section-6 .u-image-1 {
+                width: 300px;
+                height: 59px;
+            }
+            .u-dialog-section-6 .u-form-1 {
+                width: 300px;
+            }
+        }
+
+        /* --- STYLES FOR THE MODAL --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.5); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+        .modal-close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .modal-close:hover,
+        .modal-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .subject-link {
+            color: #0066cc; 
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .subject-link:hover {
+            color: #004c99;
+        }
+
+        /* --- STYLES FOR SUBMISSION CARDS AND PAGINATION --- */
+        .submission-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .submission-card.status-open { background-color: #e9f5ec; }
+        .submission-card.status-closed { background-color: #fbe9e7; }
+
+        .submission-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .submission-card-header h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .submission-card-header .date {
+            font-size: 0.85rem;
+            color: #666;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+        .submission-card-body p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .submission-card-footer {
+            text-align: right;
+            margin-top: 15px;
+        }
+        .status-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+        .status-badge.status-open { background-color: #28a745; }
+        .status-badge.status-closed { background-color: #dc3545; }
+        
+        .status-toggle {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        .status-toggle:hover { opacity: 0.8; }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+            padding-bottom: 30px;
+        }
+        .pagination button {
+            background-color: #0c6e45;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .pagination button:hover {
+            background-color: #0a5c38;
+        }
+        .pagination button.active {
+            background-color: #c3dc00;
+            color: #333;
+        }
+        .pagination button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body data-path-to-root="./" data-include-products="true" class="u-body u-xl-mode" data-lang="en">
+    
+    <header class="u-clearfix u-custom-color-5 u-header u-sticky u-sticky-b5d5 u-header" id="header">
+        <div class="u-clearfix u-sheet u-sheet-1" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="#" class="u-align-left u-image u-logo u-image-1" data-image-width="643" data-image-height="79">
+                <img src="images/LOGOWName.png" class="u-logo-image u-logo-image-1">
+            </a>
+            <a id="logoutButton" href="#" class="u-btn u-btn-round u-button-style u-custom-color-1 u-custom-font u-font-montserrat u-radius">LOGOUT</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="skrollable u-align-left u-clearfix u-container-align-left u-image u-parallax u-shading u-section-1" id="sec-a359" data-image-width="1919" data-image-height="906">
+            <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+                <h1 class="u-align-center u-custom-font u-text u-text-custom-color-5 u-text-default u-title u-text-1">Admin Dashboard</h1>
+            </div>
+        </section>
+
+        <section class="u-clearfix u-section-2" id="dashboard-content" style="padding-top: 30px;">
+            <div class="u-clearfix u-sheet u-sheet-1">
+                <!-- Statistics Cards -->
+                <div class="u-expanded-width u-list u-list-1">
+                    <div class="u-repeater u-repeater-1" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); grid-gap: 30px;">
+                        <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" style="background-color: #f2f2f2; border-radius: 10px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px;">
+                            <h3 class="u-text u-text-1" style="margin: 0; color: #333; font-size: 1.2rem;">Total Submissions</h3>
+                            <h2 class="u-text u-text-2" id="total-submissions-stat" style="font-size: 3rem; color: #0c6e45; margin-top: 5px;">--</h2>
+                        </div>
+                        <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" style="background-color: #f2f2f2; border-radius: 10px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px;">
+                            <h3 class="u-text u-text-1" style="margin: 0; color: #333; font-size: 1.2rem;">Submissions This Month</h3>
+                            <h2 class="u-text u-text-2" id="monthly-submissions-stat" style="font-size: 3rem; color: #0c6e45; margin-top: 5px;">--</h2>
+                        </div>
+                        <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle" style="background-color: #f2f2f2; border-radius: 10px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px;">
+                            <h3 class="u-text u-text-1" style="margin: 0; color: #333; font-size: 1.2rem;">Most Common Inquiry</h3>
+                            <h2 class="u-text u-text-2" id="common-inquiry-stat" style="font-size: 1.5rem; color: #0c6e45; margin-top: 5px; overflow-wrap: break-word; line-height: 1.2;">--</h2>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submissions List -->
+                <div style="margin-top: 40px;">
+                    <h2 class="u-align-center">All Contact Form Submissions</h2>
+                    <div id="submissions-container" style="margin-top: 20px;">
+                        <p>Loading submissions...</p>
+                    </div>
+                    <div id="pagination-wrapper" class="pagination"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="u-clearfix u-footer u-grey-80" id="footer">
+        <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-sheet-1">
+            <div class="custom-expanded u-align-center u-list u-list-1">
+                <div class="u-repeater u-repeater-1">
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
+                            <span class="u-align-left u-icon u-text-custom-color-2 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 54.757 54.757" style=""><use xlink:href="#svg-e936"></use></svg><svg class="u-svg-content" viewBox="0 0 54.757 54.757" x="0px" y="0px" id="svg-e936" style="enable-background:new 0 0 54.757 54.757;"><path d="M40.94,5.617C37.318,1.995,32.502,0,27.38,0c-5.123,0-9.938,1.995-13.56,5.617c-6.703,6.702-7.536,19.312-1.804,26.952 L27.38,54.757L42.721,32.6C48.476,24.929,47.643,12.319,40.94,5.617z M27.557,26c-3.859,0-7-3.141-7-7s3.141-7,7-7s7,3.141,7,7 S31.416,26,27.557,26z"></path></svg></span>
+                            <h5 class="u-custom-font u-text u-text-1">Address</h5>
+                            <h6 class="u-custom-font u-text u-text-font u-text-2"> Block 52 Lot 1 Cruz Ave. Extension, Don Bonifacio, Pulung Maragul, Angeles City, Pampanga, Philippines</h6>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-2">
+                            <span class="u-align-left u-file-icon u-icon u-text-custom-color-2 u-icon-2"><img src="images/4656841-73e6433c.png" alt=""></span>
+                            <h5 class="u-custom-font u-text u-text-3">Active Hours</h5>
+                            <h6 class="u-custom-font u-text u-text-font u-text-4"> Monday - Saturday<br><span class="u-text-custom-color-2">09:00 am - 05:00 pm</span><br>Sunday<br><span class="u-text-custom-color-2">Closed</span></h6>
+                        </div>
+                    </div>
+                    <div class="u-container-style u-list-item u-repeater-item">
+                        <div class="u-container-layout u-similar-container u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-3">
+                            <span class="u-align-left u-file-icon u-icon u-text-custom-color-2 u-icon-3"><img src="images/18600761-af2ab78a.png" alt=""></span>
+                            <h5 class="u-custom-font u-text u-text-5">Contact Us</h5>
+                            <h6 class="u-custom-font u-text u-text-font u-text-6"> 0917 501 7818</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="u-align-right u-social-icons u-social-icons-1">
+                <a class="u-social-url" title="facebook" target="_blank" href=""><span class="u-icon u-social-facebook u-social-icon u-icon-4"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style=""><use xlink:href="#svg-53d6"></use></svg><svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-53d6"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path fill="#FFFFFF" d="M73.5,31.6h-9.1c-1.4,0-3.6,0.8-3.6,3.9v8.5h12.6L72,58.3H60.8v40.8H43.9V58.3h-8V43.9h8v-9.2 c0-6.7,3.1-17,17-17h12.5v13.9H73.5z"></path></svg></span></a>
+                <a class="u-social-url" title="instagram" target="_blank" href=""><span class="u-icon u-social-icon u-social-instagram u-icon-5"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 112 112" style=""><use xlink:href="#svg-ba36"></use></svg><svg class="u-svg-content" viewBox="0 0 112 112" x="0" y="0" id="svg-ba36"><circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle><path fill="#FFFFFF" d="M55.9,38.2c-9.9,0-17.9,8-17.9,17.9C38,66,46,74,55.9,74c9.9,0,17.9-8,17.9-17.9C73.8,46.2,65.8,38.2,55.9,38.2 z M55.9,66.4c-5.7,0-10.3-4.6-10.3-10.3c-0.1-5.7,4.6-10.3,10.3-10.3c5.7,0,10.3,4.6,10.3,10.3C66.2,61.8,61.6,66.4,55.9,66.4z"></path><path fill="#FFFFFF" d="M74.3,33.5c-2.3,0-4.2,1.9-4.2,4.2s1.9,4.2,4.2,4.2s4.2-1.9,4.2-4.2S76.6,33.5,74.3,33.5z"></path><path fill="#FFFFFF" d="M73.1,21.3H38.6c-9.7,0-17.5,7.9-17.5,17.5v34.5c0,9.7,7.9,17.6,17.5,17.6h34.5c9.7,0,17.5-7.9,17.5-17.5V38.8 C90.6,29.1,82.7,21.3,73.1,21.3z M83,73.3c0,5.5-4.5,9.9-9.9,9.9H38.6c-5.5,0-9.9-4.5-9.9-9.9V38.8c0-5.5,4.5-9.9,9.9-9.9h34.5 c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path></svg></span></a>
+            </div>
+            <a href="#" class="u-align-left u-image u-logo u-image-1" data-image-width="2560" data-image-height="1440">
+                <img src="images/LOGOWHITEBG2.png" class="u-logo-image u-logo-image-1">
+            </a>
+            <div class="u-align-center u-border-1 u-border-white u-expanded-width u-line u-line-horizontal u-opacity u-opacity-50 u-line-1"></div>
+            <p class="u-align-center u-custom-font u-text u-text-default u-text-7"> © 2025 LedSolarTech Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="messageModal" class="modal">
+      <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h3>Full Message</h3>
+        <p id="modalMessageText" style="white-space: pre-wrap;"></p>
+      </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            const token = localStorage.getItem("access_token");
+            if (!token) {
+                window.location.href = "login.html";
+                return; 
+            }
+
+            // --- Global variables for pagination ---
+            let allSubmissions = [];
+            let currentPage = 1;
+            const rowsPerPage = 10;
+
+            const submissionsContainer = document.getElementById("submissions-container");
+            const paginationWrapper = document.getElementById("pagination-wrapper");
+            const logoutButton = document.getElementById("logoutButton");
+            const totalSubmissionsStat = document.getElementById("total-submissions-stat");
+            const monthlySubmissionsStat = document.getElementById("monthly-submissions-stat");
+            const commonInquiryStat = document.getElementById("common-inquiry-stat");
+
+            // --- Function to display submissions as cards for a specific page ---
+            function displaySubmissions(page) {
+                submissionsContainer.innerHTML = "";
+                currentPage = page;
+                const startIndex = (page - 1) * rowsPerPage;
+                const endIndex = startIndex + rowsPerPage;
+                const paginatedItems = allSubmissions.slice(startIndex, endIndex);
+
+                paginatedItems.forEach(sub => {
+                    const status = sub.status || 'Open';
+                    const message = (sub.message || 'No message provided.').replace(/"/g, '&quot;');
+                    const card = document.createElement('div');
+                    card.className = `submission-card status-${status.toLowerCase()}`;
+                    card.innerHTML = `
+                        <div class="submission-card-header">
+                            <h4>${sub.name || 'No Name'}</h4>
+                            <div style="text-align: right;">
+                                <span class="status-badge status-${status.toLowerCase()}">${status}</span>
+                                <div class="date" style="margin-top: 5px;">${new Date(sub.created_at).toLocaleString()}</div>
+                            </div>
+                        </div>
+                        <div class="submission-card-body">
+                            <p><strong>Email:</strong> ${sub.email || 'N/A'}</p>
+                            <p><strong>Phone:</strong> ${sub.phone || 'N/A'}</p>
+                            <p><strong>Subject:</strong> 
+                                <a class="subject-link" data-message="${message}">
+                                    ${sub.subject || 'No Subject'}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="submission-card-footer">
+                            <button class="status-toggle" data-id="${sub.id}" data-current-status="${status}">
+                                Mark as ${status === 'Open' ? 'Closed' : 'Open'}
+                            </button>
+                        </div>
+                    `;
+                    submissionsContainer.appendChild(card);
+                });
+            }
+
+            // --- Function to set up pagination buttons ---
+            function setupPagination() {
+                paginationWrapper.innerHTML = "";
+                const pageCount = Math.ceil(allSubmissions.length / rowsPerPage);
+
+                let prevButton = document.createElement('button');
+                prevButton.innerText = '< Previous';
+                prevButton.disabled = currentPage === 1;
+                prevButton.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        displaySubmissions(currentPage - 1);
+                        setupPagination();
+                    }
+                });
+                paginationWrapper.appendChild(prevButton);
+
+                for (let i = 1; i <= pageCount; i++) {
+                    let btn = document.createElement('button');
+                    btn.innerText = i;
+                    if (currentPage === i) {
+                        btn.classList.add('active');
+                    }
+                    btn.addEventListener('click', () => {
+                        displaySubmissions(i);
+                        setupPagination();
+                    });
+                    paginationWrapper.appendChild(btn);
+                }
+
+                let nextButton = document.createElement('button');
+                nextButton.innerText = 'Next >';
+                nextButton.disabled = currentPage === pageCount;
+                nextButton.addEventListener('click', () => {
+                    if (currentPage < pageCount) {
+                        displaySubmissions(currentPage + 1);
+                        setupPagination();
+                    }
+                });
+                paginationWrapper.appendChild(nextButton);
+            }
+
+            // --- Main data fetching and rendering logic ---
+            try {
+                const response = await fetch("http://127.0.0.1:8000/dashboard-data", {
+                    headers: { 'Authorization': 'Bearer ' + token }
+                });
+
+                if (response.status === 401) {
+                    localStorage.removeItem("access_token");
+                    alert("Session expired. Please log in again.");
+                    window.location.href = "login.html";
+                    return;
+                }
+                if (!response.ok) throw new Error('Failed to fetch data.');
+
+                allSubmissions = await response.json();
+                
+                totalSubmissionsStat.textContent = allSubmissions.length;
+                const currentMonth = new Date().getMonth();
+                const currentYear = new Date().getFullYear();
+                const monthlySubmissions = allSubmissions.filter(sub => {
+                    const subDate = new Date(sub.created_at);
+                    return subDate.getMonth() === currentMonth && subDate.getFullYear() === currentYear;
+                }).length;
+                monthlySubmissionsStat.textContent = monthlySubmissions;
+                
+                if (allSubmissions.length > 0) {
+                    const subjects = allSubmissions.map(sub => sub.subject).filter(s => s);
+                    const subjectCounts = subjects.reduce((acc, subject) => {
+                        acc[subject] = (acc[subject] || 0) + 1;
+                        return acc;
+                    }, {});
+                    const mostCommonSubject = Object.keys(subjectCounts).reduce((a, b) => subjectCounts[a] > subjectCounts[b] ? a : b, 'N/A');
+                    commonInquiryStat.textContent = mostCommonSubject;
+                    
+                    displaySubmissions(1);
+                    setupPagination();
+                } else {
+                     commonInquiryStat.textContent = 'N/A';
+                     submissionsContainer.innerHTML = "<p>No submissions have been received yet.</p>";
+                }
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                submissionsContainer.innerHTML = "<p style='color: red;'>Could not load dashboard data.</p>";
+                totalSubmissionsStat.textContent = "Error";
+                monthlySubmissionsStat.textContent = "Error";
+                commonInquiryStat.textContent = "Error";
+            }
+
+            // --- Event Listeners ---
+            const modal = document.getElementById("messageModal");
+            const modalMessageText = document.getElementById("modalMessageText");
+            const closeBtn = document.querySelector(".modal-close");
+
+            submissionsContainer.addEventListener('click', async function(event) {
+                // Handle status toggle clicks
+                if (event.target.classList.contains('status-toggle')) {
+                    const button = event.target;
+                    const submissionId = button.dataset.id;
+                    const currentStatus = button.dataset.currentStatus;
+                    const newStatus = currentStatus === 'Open' ? 'Closed' : 'Open';
+                    
+                    try {
+                        const response = await fetch(`http://127.0.0.1:8000/submissions/${submissionId}/status`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + token
+                            },
+                            body: JSON.stringify({ status: newStatus })
+                        });
+
+                        if (!response.ok) throw new Error('Failed to update status.');
+
+                        // Find the submission in the global array and update its status
+                        const submissionToUpdate = allSubmissions.find(sub => sub.id == submissionId);
+                        if(submissionToUpdate) submissionToUpdate.status = newStatus;
+                        
+                        // Re-render the current page
+                        displaySubmissions(currentPage);
+
+                    } catch (error) {
+                        console.error('Error updating status:', error);
+                        alert('Could not update status.');
+                    }
+                }
+
+                // Handle subject link clicks for modal
+                if (event.target.classList.contains('subject-link')) {
+                    const message = event.target.getAttribute('data-message');
+                    modalMessageText.textContent = message;
+                    modal.style.display = "block";
+                }
+            });
+
+            closeBtn.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            
+            if(logoutButton) {
+                logoutButton.addEventListener("click", function() {
+                    localStorage.removeItem("access_token");
+                    alert("You have been logged out.");
+                    window.location.href = "login.html";
+                });
+            }
+        });
+    </script>
+</body>
+</html>
